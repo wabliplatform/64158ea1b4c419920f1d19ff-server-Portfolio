@@ -1,5 +1,5 @@
-const PostsController = require('./PostsController');
+const DescsController = require('./DescsController');
 
 module.exports = {
-  PostsController,
+  DescsController,
 };

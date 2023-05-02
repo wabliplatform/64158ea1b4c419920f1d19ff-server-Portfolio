@@ -14,21 +14,21 @@ externalDocs:
   url: http://swagger.io
 servers:
 - description: wabli-deploy-test
-  url: http://83.212.100.226:4008/v1
+  url: https://83.212.100.226:4008/v1
 security:
 - {}
 tags:
 - description: not yet ready
-  name: posts
+  name: descs
 paths:
-  /posts:
+  /descs:
     post:
-      operationId: createposts
+      operationId: createdescs
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/posts'
+              $ref: '#/components/schemas/descs'
         description: data to be created
         required: true
       responses:
@@ -36,20 +36,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/posts'
+                $ref: '#/components/schemas/descs'
           description: successful operation
       summary: Creates the data
       tags:
-      - posts
-      x-eov-operation-handler: controllers/PostsController
-  /posts/{postsId}:
+      - descs
+      x-eov-operation-handler: controllers/DescsController
+  /descs/{descsId}:
     delete:
-      operationId: deleteposts
+      operationId: deletedescs
       parameters:
       - description: the Id parameter
         explode: false
         in: path
-        name: postsId
+        name: descsId
         required: true
         schema:
           type: string
@@ -59,15 +59,15 @@ paths:
           description: successful operation
       summary: Delete the element
       tags:
-      - posts
-      x-eov-operation-handler: controllers/PostsController
+      - descs
+      x-eov-operation-handler: controllers/DescsController
     get:
-      operationId: getposts
+      operationId: getdescs
       parameters:
       - description: the Id parameter
         explode: false
         in: path
-        name: postsId
+        name: descsId
         required: true
         schema:
           type: string
@@ -77,19 +77,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/posts'
+                $ref: '#/components/schemas/descs'
           description: successful operation
       summary: Get the element
       tags:
-      - posts
-      x-eov-operation-handler: controllers/PostsController
+      - descs
+      x-eov-operation-handler: controllers/DescsController
     put:
-      operationId: updateposts
+      operationId: updatedescs
       parameters:
       - description: the Id parameter
         explode: false
         in: path
-        name: postsId
+        name: descsId
         required: true
         schema:
           type: string
@@ -98,42 +98,47 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/posts'
+              $ref: '#/components/schemas/descs'
         description: data to be updated
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/posts'
+                $ref: '#/components/schemas/descs'
           description: successful operation
       summary: Updates the element
       tags:
-      - posts
-      x-eov-operation-handler: controllers/PostsController
-  /posts/getAll:
+      - descs
+      x-eov-operation-handler: controllers/DescsController
+  /descs/getAll:
     get:
-      operationId: getAllposts
+      operationId: getAlldescs
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/posts'
+                  $ref: '#/components/schemas/descs'
                 type: array
           description: successful operation
       summary: Get all the data
       tags:
-      - posts
+      - descs
       x-method-getAll: "true"
-      x-eov-operation-handler: controllers/PostsController
+      x-eov-operation-handler: controllers/DescsController
 components:
   schemas:
-    posts:
+    descs:
       example:
         _id: _id
+        desc: desc
       properties:
         _id:
           type: string
+        desc:
+          type: string
+      required:
+      - desc
       type: object
